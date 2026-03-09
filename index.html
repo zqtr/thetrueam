@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Modern Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP for Target Cursor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <!-- Target Cursor -->
+    <div id="target-cursor" class="target-cursor-wrapper">
+        <div class="target-cursor-dot"></div>
+        <div class="target-cursor-corner corner-tl"></div>
+        <div class="target-cursor-corner corner-tr"></div>
+        <div class="target-cursor-corner corner-br"></div>
+        <div class="target-cursor-corner corner-bl"></div>
+    </div>
+
+    <!-- Animated Background Layer -->
+    <div class="bg-animation"></div>
+
+    <!-- Enter Screen -->
+    <div id="enter-screen">
+        <button id="enter-btn">[ CLICK TO ENTER ]</button>
+    </div>
+
+    <!-- Main Container (Hidden Initially) -->
+    <div id="main-container" class="hidden">
+        <div class="glare"></div>
+        <div class="profile">
+            <div class="profile-img-container">
+                <div class="particle p-1"></div>
+                <div class="particle p-2"></div>
+                <div class="particle p-3"></div>
+                <div class="particle p-4"></div>
+                <div class="particle p-5"></div>
+                <div class="particle p-6"></div>
+                <img src="assets/profile.png" alt="Profile Picture" class="profile-img">
+            </div>
+            <h1 class="username">@mrmhndi</h1>
+            <p class="bio">Built From Nothing , Success Is The Only Option</p>
+        </div>
+
+        <div class="links">
+            <a href="https://x.com/thetrueeam" class="link-btn link-x" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i> X (Twitter)
+            </a>
+            <a href="https://instagram.com/thetrueeam" class="link-btn link-instagram" target="_blank">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://tiktok.com/@aey.265" class="link-btn link-tiktok" target="_blank">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://discord.com/users/mrmhndi" class="link-btn link-discord" target="_blank">
+                <i class="fa-brands fa-discord"></i> Discord
+            </a>
+            <a href="https://steamcommunity.com/profiles/76561198329976407/" class="link-btn link-steam" target="_blank">
+                <i class="fa-brands fa-steam"></i> Steam
+            </a>
+        </div>
+        
+        <!-- Audio Player Tracker -->
+        <div class="audio-player">
+            <button id="play-pause-btn"><i class="fa-solid fa-volume-high"></i></button>
+            <div class="progress-container">
+                <span id="current-time">0:00</span>
+                <input type="range" id="seek-bar" value="0" max="100">
+                <span id="total-time">0:00</span>
+            </div>
+            <div class="volume-container">
+                <i class="fa-solid fa-volume-high" id="mute-icon"></i>
+                <input type="range" id="volume-bar" value="50" max="100">
+            </div>
+            <img src="https://i.pinimg.com/564x/8e/32/06/8e320626c8b67785682f48541a72a8e9.jpg" alt="Song Cover" class="song-cover">
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="assets/flashing-lights-cut.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
