@@ -547,6 +547,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle Enter Button Click
     enterBtn.addEventListener('click', () => {
+        // Manually reset cursor if it was hovering the enter button
+        if (activeTarget === enterBtn) {
+            const leaveEvent = new MouseEvent('mouseleave');
+            enterBtn.dispatchEvent(leaveEvent);
+        }
+
         // Fade out enter screen
         enterScreen.style.opacity = '0';
         
