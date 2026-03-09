@@ -186,7 +186,7 @@ function initPixelSnow() {
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     const renderer = new THREE.WebGLRenderer({
-        antialias: false,
+        antialias: true, // Enabled antialiasing for smoother edges
         alpha: true,
         premultipliedAlpha: false,
         powerPreference: 'high-performance',
@@ -194,7 +194,8 @@ function initPixelSnow() {
         depth: false
     });
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Use a higher max pixel ratio to ensure it looks sharp on high-res displays (like Retina/4K)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 3));
     renderer.setSize(container.offsetWidth, container.offsetHeight);
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
@@ -204,10 +205,10 @@ function initPixelSnow() {
         fragmentShader,
         uniforms: {
             uTime: { value: 0 },
-            uResolution: { value: new THREE.Vector2(container.offsetWidth, container.offsetHeight) },
+            uResolution: { value: new THREE.Vector2(container.offsetWidth * Math.min(window.devicePixelRatio, 3), container.offsetHeight * Math.min(window.devicePixelRatio, 3)) }, // Pass actual pixel resolution to shader
             uFlakeSize: { value: config.flakeSize },
             uMinFlakeSize: { value: config.minFlakeSize },
-            uPixelResolution: { value: config.pixelResolution },
+            uPixelResolution: { value: config.pixelResolution * Math.min(window.devicePixelRatio, 3) }, // Scale pixel resolution
             uSpeed: { value: config.speed },
             uDepthFade: { value: config.depthFade },
             uFarPlane: { value: config.farPlane },
@@ -230,8 +231,9 @@ function initPixelSnow() {
         resizeTimeout = setTimeout(() => {
             const w = container.offsetWidth;
             const h = container.offsetHeight;
+            const dpr = Math.min(window.devicePixelRatio, 3);
             renderer.setSize(w, h);
-            material.uniforms.uResolution.value.set(w, h);
+            material.uniforms.uResolution.value.set(w * dpr, h * dpr);
         }, 100);
     };
     window.addEventListener('resize', handleResize);
