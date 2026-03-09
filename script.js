@@ -168,7 +168,7 @@ function initPixelSnow() {
         color: '#ffffff',
         flakeSize: 0.01,
         minFlakeSize: 1.25,
-        pixelResolution: 200,
+        pixelResolution: 4000, // Increased to remove pixelation effect
         speed: 1.25,
         depthFade: 8,
         farPlane: 20,
